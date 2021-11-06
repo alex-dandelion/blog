@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Event bus in Unity3d</title>
+	</head>
+	<body>
+    <h1>Introduction</h1>
+		  <p>Unity’s event driven messaging system works great for components in a hierarchical structure. E.g. behavior scripts attached to the same GameObject or parent objects sending messages to their children.
+      <p>Messafe firing flow is matters. You need to handle how to event fires
+      <p>Consistent structure comes through discipline, refactoring, and experience, not from ECS, DI, or whatever other fancy convention you want to use.
+      <p>Чтобы бороться с этими проблемами нужно ограничить использование EventBus:
+— Пассивные реакции — компоненты, реагирующие на ивенты должны менять только свое состояние, но не состояние других компонентов.
+— Низкоуровневые реакции — компоненты, реагирующие на ивенты, должны быть ниже по уровню абстракции. Условно, листья не должны шевелить деревом, дерево не должно управлять стартом игры (но наоборот — можно). Если у вас есть такое место, к примеру, рестарт игры завязан на упавшее здоровье игрока — возможно вы что-то делаете не так. Об этом же говорят проблемы с изменением списка подписчиков — скорее всего один из подписчиков слишком важная шишка и не должен быть просто подписчиком. Решайте это выделением специальных механизмов — к примеру, игрок должен иметь специальный колбек, который должен быть задан при его создании — тогда контроллер сущностей получает явную ручку для организации flow. А вот все остальные — интерфейсы здоровья, эффекты и т.д. — они подписываются на ивент изменения здоровья игрока.
+— Изоляция. Если вы вынуждены написать логику, нарушающую первые 2 правила — выделите ее в отдельное место, которое об этом явно говорит. Например, ваши ГД хотят сами управлять условиями того, как завершается уровень, и хотят использовать для этого любой ивент, доступный им. Или стартующее новые миссии.
+В этом случае это место станет точкой отказа, по логами и стактрейсу можно будет определить его как источник в случае ошибок, и в нем же можно будет разобраться с проблемами очередности и одновременности (к примеру, в этом компоненте можно будет организовать очередь сообщений, если могут быть выполнены сразу несколько условий с конфликтующими управляющими воздействиями)</p>
+    <h1>Solutions</h1>
+      <h2>Zenject</h2>
+        <p>Modest Tree is fork of Zenject
+		  <h2>UniRX</h2>
+          <a href="https://gist.github.com/namkazt/f017ada0a403a3102f3faeaf1a125996">Event bus for UnitRX</a>
+      <h2>Thomas Komarnicki solution<h2>
+        <a href="https://medium.com/@tkomarnicki/messaging-architecture-in-unity-6e6409bdda02">Medium article</a>
+        <a href="https://github.com/ThomasKomarnicki/GameEventBus">Git hub link</a>
+      <h2>Tiny Messenger</h2>
+        <p>C# solution
+        <a href="https://stackoverflow.com/questions/368265/a-simple-event-bus-for-net">Tiny messenger</a>
+      <h2>Extras</h2>
+          <a href="https://stackoverflow.com/questions/368265/a-simple-event-bus-for-net">List of messagers libraries</a>
+	</body>
+</html>

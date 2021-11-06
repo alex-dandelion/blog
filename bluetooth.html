@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bluetooth</title>
+	</head>
+	<body>
+    <h1>Main features<h1>
+      <p>Operates between 2.400 GHz and 2.483.5 GHz</p>
+      <p>Bluetooth LE (Bluetooth Low Energy)</p>
+				<ul>
+					<li>1Mbs or 2 Mbs</li>
+        	<li>Can send an receive advertising package</li>
+				</ul>
+      <p>Bluetooth Classic (Bluetooth Basic Rate/Enhanced Data Rate, or BR/EDR)</p>
+				<ul>
+					<li>3 Mbs</li>
+        	<li>Must always be paired</li>
+        </ul>
+      <p>Personal-area network (PAN) or piconet</p>
+      <p>Links:</p>
+        <ul>https://electronics.howstuffworks.com/bluetooth.htm</ul>
+    <h1></h1>
+        <p>Received Signal Strength Indicator (RSSI)</p>
+    <h1>Class of Device (CoD)</h1>
+      <p>The Inquiry Access Code is the first level of filtering when finding Bluetooth devices and services. The main
+        purpose of defining multiple IACs is to limit the number of responses that are received when scanning devices
+        within range.</p>
+      <a href="https://www.bluetooth.com/specifications/assigned-numbers/baseband/">oficial documentation</a>
+      <a href="https://www.ampedrftech.com/guides/cod_definition.pdf">another useful</a>
+
+    <h1>My way to make it works</h1>
+      <p>Tryed to connect with <b>pybluez</b> but it doesn't worsk</p>
+      <p>After that I find out that most of python scripts use <a href="http://www.bluez.org/about/">BlueZ API</a>
+        to work with bluetooth. Followed the instructions from this web site <a hreff="https://computingforgeeks.com/connect-to-bluetooth-device-from-linux-terminal/">computionforgiks</a>
+        All works like a sharm, I can discover and conect devices ( my headphones).
+        But I need more - connect through python script and send data. So I found website <a href="https://ukbaz.github.io/en/html/reference/bluetooth_overview/index.html">ukbaz</a>
+      </p>
+      <h2>important concepts from it Below:</h2>
+        <h3>Work with BluZ</h3>
+          <ul>Install, folowing <b>computionforgiks</b> instructions</ul>
+    <h1>Other useful liks</h1>
+        <p><a href="https://lisha.ufsc.br/teaching/shi/ine5346-2003-1/work/bluetooth/bluetooth.html">spec</a></p>
+	</body>
+</html>
